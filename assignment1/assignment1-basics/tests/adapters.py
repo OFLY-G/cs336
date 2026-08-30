@@ -8,7 +8,7 @@ import numpy.typing as npt
 import torch
 from jaxtyping import Bool, Float, Int
 from torch import Tensor
-
+import einops
 
 def run_linear(
     d_in: int,
@@ -29,6 +29,8 @@ def run_linear(
         Float[Tensor, "... d_out"]: The transformed output of your linear module.
     """
 
+    lineared = einops.einsum( in_features, weights , "... d_in , d_out d_in ->... d_out")
+    return lineared
     raise NotImplementedError
 
 
