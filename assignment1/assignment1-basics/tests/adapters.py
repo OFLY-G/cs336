@@ -28,10 +28,9 @@ def run_linear(
     Returns:
         Float[Tensor, "... d_out"]: The transformed output of your linear module.
     """
+    from cs336_basics.linear import my_run_linear
+    return my_run_linear( d_in , d_out , weights , in_features)
 
-    lineared = einops.einsum( in_features, weights , "... d_in , d_out d_in ->... d_out")
-    return lineared
-    raise NotImplementedError
 
 
 def run_embedding(
@@ -52,8 +51,8 @@ def run_embedding(
     Returns:
         Float[Tensor, "... d_model"]: Batch of embeddings returned by your Embedding layer.
     """
-
-    raise NotImplementedError
+    from cs336_basics.embedding import my_run_embedding
+    return my_run_embedding(vocab_size=vocab_size , d_model=d_model , weights=weights , token_ids=token_ids )
 
 
 def run_swiglu(
